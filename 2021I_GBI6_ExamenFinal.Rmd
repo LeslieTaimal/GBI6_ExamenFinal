@@ -133,7 +133,11 @@ Para esta pregunta tiene que utilizar la data ```df_long```.
 ### [1 PUNTO] 2.1 Cree la funcion ```tcga_boxplots``` para visualizar boxplots y jitterplots. El único parámetro de la función es ```dataset```. La función debe crear un boxplot de los niveles de expresión para cada gen.
 
 ```{r}
-
+library(ggplot2)
+library(dplyr)
+tcga_boxplots <- function(data){
+  datas <- df_long %>% filter (dataset == data)
+  data_final <- datas %>% ggplot(aes(x=Gen,y=expresion_level, color = Gen)) +  geom_boxplot() + geom_jitter ()}
 
 ```
 
