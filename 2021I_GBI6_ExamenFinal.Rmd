@@ -166,7 +166,18 @@ ggsave(filename = "results/boxplot3.png", plot = grafico_3,  units="in", dpi = 3
 ### [1 PUNTO] 2.4 Escriba la función ```reg_gen_expression```, con el parámetro ```gen```. En este caso la función visualizará una gráfica de nube de puntos (geom_point) y una regresión por tipo de "dataset". La gráfica será de comparación de gen1 con gen2; por ejemplo en el eje "x" ```GATA3``` y en el eje "y"" ```FN1```.  
 
 ```{r reg_gen_exp}
-
+library(dplyr)
+library(ggplot2)
+reg_gen_expression <- function(grafico_3){
+  ejex=grafico_3[1]
+  ejey=grafico_3[2]
+  graphic_point1 <- df_long %>% filter (Gen == ejex)
+  graphic_point2  <- df_long %>% filter (Gen == ejey)
+  graphic_point <- cbind(graphic_point1, graphic_point2)
+  final1 <-  tibble("dataset"=graphic_point[,1],"gen1"=graphic_point[,3],"gen2"=graphic_point[,6])
+  final <- final1 %>% ggplot(aes(x = gen1, y = gen2, color=dataset)) + geom_point() + geom_smooth(method=lm, se=FALSE)
+  final}
+                 
                                                                                
 
 ```
