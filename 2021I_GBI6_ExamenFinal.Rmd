@@ -90,7 +90,8 @@ head(df,5)
 ### [1 PUNTO] 1.3 Cree una función de nombre ```long_df``` para transformar la data ```df``` de la forma wide a long.
 
 ```{r funcion_long}
-
+library("tidyr")
+long_df <- df %>% pivot_longer(!c(bcr_patient_barcode, dataset), names_to = "genes de expresión mRNA", values_to = "valor")
 
 ```
 
