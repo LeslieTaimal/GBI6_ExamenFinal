@@ -91,7 +91,7 @@ head(df,5)
 
 ```{r funcion_long}
 library("tidyr")
-long_df <- df %>% pivot_longer(!c(bcr_patient_barcode, dataset), names_to = "genes de expresión mRNA", values_to = "valor")
+long_df <- df %>% pivot_longer(!c(bcr_patient_barcode, dataset), names_to = "Gen", values_to = "valor")
 
 ```
 
@@ -176,15 +176,19 @@ reg_gen_expression <- function(grafico_3){
   graphic_point <- cbind(graphic_point1, graphic_point2)
   final1 <-  tibble("dataset"=graphic_point[,1],"gen1"=graphic_point[,3],"gen2"=graphic_point[,6])
   final <- final1 %>% ggplot(aes(x = gen1, y = gen2, color=dataset)) + geom_point() + geom_smooth(method=lm, se=FALSE)
-  final}
-                 
-                                                                               
+  final}                                                 
 
 ```
 
 
 ### [0.5 PUNTOS] 2.5. Utilizando la función ```lapply()``` genera la lista ```reg_genplots``` con las gráficas para cada par de genes posibles. Recuerde que tiene 7 tipos de genes, se debe tener todas las combinaciones posibles por pares de genes (combinatoria sin repetición).
 ```{r list_regplots}
+combination <- unique(df_long$Gen)
+combination1 <- combn(combination,combination2=2,simplify = FALSE)
+reg_genplots <- lapply(l,reg_gen_expression)
+print (paste("numero de la lista es: ", length(reg_genplots)))
+print ("El 11vo elemnto es:") 
+reg_genplots[[11]]
 
 ```
 
