@@ -143,7 +143,12 @@ tcga_boxplots <- function(data){
 
 ### [0.5 PUNTOS] 2.2 Utilizando la función ```lapply()``` genera la lista ```cancertype_boxplots``` con las gráficas para cada tipo de cancer (cada tipo de dataset). 
 ```{r list_boxplots}
-
+graphic <- unique(df_long$dataset)
+cancertype_boxplots <- lapply(graphic, tcga_boxplots)
+o <- length(cancertype_boxplots)
+print (paste("numero de elementos: ", o))
+print ("tercer elemento")
+cancertype_boxplots[[3]]
 
 ```
 
