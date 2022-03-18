@@ -91,7 +91,7 @@ head(df,5)
 
 ```{r funcion_long}
 library("tidyr")
-long_df <- df %>% pivot_longer(!c(bcr_patient_barcode, dataset), names_to = "Gen", values_to = "valor")
+long_df <- df %>% pivot_longer(!c(bcr_patient_barcode, dataset), names_to = "Gen", values_to = "expresion_level")
 
 ```
 
@@ -185,11 +185,10 @@ reg_gen_expression <- function(grafico_3){
 ```{r list_regplots}
 combination <- unique(df_long$Gen)
 combination1 <- combn(combination,combination2=2,simplify = FALSE)
-reg_genplots <- lapply(l,reg_gen_expression)
+reg_genplots <- lapply(combination1,reg_gen_expression)
 print (paste("numero de la lista es: ", length(reg_genplots)))
 print ("El 11vo elemnto es:") 
-reg_genplots[[11]]
-
+reg_genplots[[11]] 
 ```
 
 
