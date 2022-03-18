@@ -196,15 +196,16 @@ reg_genplots[[11]]
 ### [0.5 PUNTOS] 2.6. Guarde en el subdirectorio ```result``` el onceavo plot de la lista ```reg_genplots``` con el nombre ```regresion11.pdf```. La definición de a figura debe ser de 300dpi. 
 ```{r reg11}
 
-
+regresion <- reg_genplots[[11]]
+ggsave(filename = "results/regresion11.pdf", units="in",
+dpi = 300,limitsize=TRUE)
 ```
 
 
 ### [1 PUNTO] 2.7. Interprete los resultados de las figuras ```boxplot3.png``` y ```regresion11.pdf```.
 
 ```{tex}
-# Esciba aquí su intepretación
-
+#Tuve problemas para visualizar el gráfico por  lo que no puedo hacer la interpretación adjunto en resultados el problema de r , hable con el profe acerca de este asunto                            
 ```
 
 ## 3. CONTROL DE LA VERSIÓN [1 PUNTO]. Se verficará en ell repositorio de GitHub. 
