@@ -106,6 +106,13 @@ View(df_long)
 
 ### [0.5 PUNTOS] 1.5 A partir de la data ```df_long```, genere un **Descriptive table** (librería ```sjPlot```) y guárdelo en el subdirectorio "result"  con el nombre **mRNA_expr_summary.doc** (previamente debe seleccionar las celdas adecuadas con funciones de la librería ```dplyr``` en conjunto con el operador ```%>%```). 
 ```{r desc_table}
+library("sjPlot")
+library("sjmisc")
+library("dplyr")
+descript_table <- df_long %>% group_by(dataset,Gen)
+TDesc <- descr(descript_table, out="browser",file="results/mRNA_expr_summary.doc")
+library(readxl)
+mi_df <- data.frame(TDesc)
 
 ```
 
